@@ -1,0 +1,11 @@
+node_modules/
+.vscode/
+.idea/
+*.log
+
+build/
+dist/
+public/assets/
+.env.js
+
+npm-debug.log
