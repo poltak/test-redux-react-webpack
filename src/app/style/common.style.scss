@@ -1,0 +1,15 @@
+@import './app.var.style';
+
+.containers-custom {
+  padding-left: $container-custom-padding-left;
+  padding-right: $container-custom-padding-right;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.view-enter {
+  animation: fadeIn .5s both ease-in;
+  z-index: 9999;
+}
