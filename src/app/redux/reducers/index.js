@@ -1,5 +1,5 @@
-import views from './views';
+import testApp from './testApp';
 
 export {
-  views,
+  testApp,
 };
