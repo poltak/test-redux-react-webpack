@@ -42,6 +42,7 @@ const config = {
       query: {
         // Allows support for ES6+ES7+JSX
         presets: ['es2015', 'react', 'stage-2'],
+        plugins: ['transform-decorators-legacy'],
       },
       exclude: [nodeModulesDir],
     }, {
