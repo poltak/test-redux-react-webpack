@@ -14,7 +14,7 @@ class Home extends React.Component {
     this.state = {
       animated:   true,
       viewEnters: false,
-      showModal:  false,
+      showModal: false,
     };
   }
 
@@ -31,6 +31,9 @@ class Home extends React.Component {
   }
 
   render() {
+    const { store } = this.context;
+    const state = store.getState();
+
     return (
       <div>
         <Jumbotron>
@@ -54,7 +57,7 @@ class Home extends React.Component {
           </p>
         </Jumbotron>
 
-       <Modal show={this.state.showModal}>
+       <Modal show={state.testApp.showModal}>
           <Modal.Header>
             <Modal.Title>Modal test</Modal.Title>
           </Modal.Header>
@@ -77,18 +80,35 @@ class Home extends React.Component {
     return homeViewClasses;
   }
 
-  close() {
-    this.setState({ showModal: false });
+  static get COMPONENT_NAME() {
+    return 'home';
   }
 
   open() {
-    this.setState({ showModal: true });
+    const { store } = this.context;
+    const state = store.getState();
+
+    this.props.actions.showModal(Home.COMPONENT_NAME);
+    this.setState({ showModal: state.testApp.showModal });
+  }
+
+  close() {
+    const { store } = this.context;
+    const state = store.getState();
+
+    this.props.actions.hideModal(Home.COMPONENT_NAME);
+    this.setState({ showModal: state.testApp.showModal });
   }
 
 }
 
+Home.contextTypes = {
+  store:        React.PropTypes.object,
+};
+
 Home.propTypes = {
-  actions: React.PropTypes.object,
+  actions:      React.PropTypes.object,
+  currentView:  React.PropTypes.string,
 };
 
 export default Home;
